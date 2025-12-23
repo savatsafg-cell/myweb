@@ -1,0 +1,50 @@
+---
+layout: default
+title: 分类
+permalink: /categories/
+---
+
+<div class="categories-page">
+  <h1 class="page-heading">文章分类</h1>
+  
+  <div class="categories-list">
+    {% assign categories = site.categories | sort %}
+    {% for category in categories %}
+      <div class="category-item">
+        <h2 class="category-title">
+          <a href="{{ category[0] | prepend: '/categories/' | relative_url }}">{{ category[0] }}</a>
+          <span class="post-count">({{ category[1].size }})</span>
+        </h2>
+        
+        <div class="category-posts">
+          {% for post in category[1] limit:5 %}
+            <article class="post-item">
+              <h3 class="post-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+              </h3>
+              <div class="post-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
+                {% if post.tags != empty %}
+                  • 标签: 
+                  {% for tag in post.tags limit:3 %}
+                    <a href="{{ '/tags/' | append: tag | relative_url }}" class="post-tag">#{{ tag }}</a>
+                    {% unless forloop.last %} {% endunless %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="post-excerpt">
+                {{ post.excerpt | strip_html | truncatewords: 30 }}
+              </div>
+            </article>
+          {% endfor %}
+          
+          {% if category[1].size > 5 %}
+            <a href="{{ category[0] | prepend: '/categories/' | relative_url }}" class="view-all-posts">
+              查看所有 {{ category[1].size }} 篇文章 <i class="fas fa-arrow-right"></i>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

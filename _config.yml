@@ -1,0 +1,78 @@
+# Site settings
+title: 个人博客
+description: >-
+  欢迎来到我的个人博客，这里分享技术文章、生活感悟和创意思考。
+baseurl: ""
+url: "https://username.github.io"
+
+# Author
+author: Your Name
+email: your.email@example.com
+avatar: "/assets/images/avatar.jpg"
+
+# Social links
+twitter_username:
+github_username:
+linkedin_username:
+instagram_username:
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Collections
+collections:
+  tags:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+  - scope:
+      path: ""
+      type: "tags"
+    values:
+      layout: "tag"
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# SEO and Analytics
+google_analytics: G-XXXXXXXXXX  # Replace with your actual Google Analytics tracking ID
+google_site_verification:  # Optional: Add your Google Search Console verification code
+bing_site_verification:  # Optional: Add your Bing Webmaster Tools verification code
+
+# Comments (Optional)
+disqus:
+  shortname: your-disqus-shortname

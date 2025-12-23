@@ -1,0 +1,89 @@
+---
+layout: default
+---
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%Y年%m月%d日" }}
+      </time>
+      {% if page.author %}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span itemprop="name">{{ page.author }}</span>
+          </span>
+      {% endif %}
+      {% if page.categories != empty %}
+        • 分类: 
+        {% for category in page.categories %}
+          <a href="{{ '/categories/' | append: category | relative_url }}" class="post-category">{{ category }}</a>
+          {% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      {% endif %}
+      {% if page.tags != empty %}
+        • 标签: 
+        {% for tag in page.tags %}
+          <a href="{{ '/tags/' | append: tag | relative_url }}" class="post-tag">#{{ tag }}</a>
+          {% unless forloop.last %} {% endunless %}
+        {% endfor %}
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-navigation">
+      {% if page.previous.url %}
+        <a class="prev-post" href="{{ page.previous.url | relative_url }}">
+          <i class="fas fa-arrow-left"></i> {{ page.previous.title | truncate: 30 }}
+        </a>
+      {% endif %}
+      {% if page.next.url %}
+        <a class="next-post" href="{{ page.next.url | relative_url }}">
+          {{ page.next.title | truncate: 30 }} <i class="fas fa-arrow-right"></i>
+        </a>
+      {% endif %}
+    </div>
+    
+    <div class="post-sharing">
+      <h3>分享这篇文章</h3>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-button twitter">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-button facebook">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-button linkedin">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
+        </a>
+        <a href="mailto:?subject={{ page.title | url_encode }}&body=我想分享这篇文章给你：{{ page.url | absolute_url | url_encode }}" class="share-button email">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+    
+    {% if site.disqus.shortname and page.comments != false %}
+    <div id="disqus_thread" class="post-comments"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = "{{ page.url | absolute_url }}";
+        this.page.identifier = "{{ page.url }}";
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{ site.disqus.shortname }}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>请启用JavaScript来查看 <a href="https://disqus.com/?ref_noscript" rel="nofollow">Disqus评论</a>。</noscript>
+    {% endif %}
+  </footer>
+
+</article>

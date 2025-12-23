@@ -1,0 +1,175 @@
+---
+layout: default
+title: "404: 页面未找到"
+permalink: /404.html
+---
+
+<div class="error-page">
+  <div class="error-content">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-message">页面未找到</h2>
+    <p class="error-description">
+      抱歉，您访问的页面不存在或已被移除。
+    </p>
+    <div class="error-actions">
+      <a href="{{ "/" | relative_url }}" class="btn btn-primary">
+        <i class="fas fa-home"></i> 返回首页
+      </a>
+      <a href="{{ "/search" | relative_url }}" class="btn btn-secondary">
+        <i class="fas fa-search"></i> 搜索内容
+      </a>
+    </div>
+    
+    <div class="error-suggestions">
+      <h3>您可能在寻找：</h3>
+      <ul>
+        <li><a href="{{ "/" | relative_url }}">首页</a></li>
+        <li><a href="{{ "/categories" | relative_url }}">文章分类</a></li>
+        <li><a href="{{ "/tags" | relative_url }}">标签云</a></li>
+        <li><a href="{{ "/about" | relative_url }}">关于我</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="error-illustration">
+    <img src="{{ "/assets/images/404.svg" | relative_url }}" alt="404错误插画" />
+  </div>
+</div>
+
+<style>
+  .error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .error-content {
+    max-width: 600px;
+  }
+  
+  .error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #0366d6;
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .error-message {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 20px 0;
+    color: #111;
+  }
+  
+  .error-description {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 30px;
+  }
+  
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary {
+    background-color: #0366d6;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0256cc;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #f6f8fa;
+    color: #0366d6;
+    border: 1px solid #e1e4e8;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e1e4e8;
+    text-decoration: none;
+    color: #0366d6;
+  }
+  
+  .error-suggestions {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #e1e4e8;
+  }
+  
+  .error-suggestions h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .error-suggestions ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .error-suggestions li {
+    margin-bottom: 10px;
+  }
+  
+  .error-suggestions a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+  
+  .error-suggestions a:hover {
+    text-decoration: underline;
+  }
+  
+  .error-illustration {
+    margin-top: 40px;
+    max-width: 400px;
+  }
+  
+  .error-illustration img {
+    width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 600px) {
+    .error-code {
+      font-size: 6rem;
+    }
+    
+    .error-message {
+      font-size: 2rem;
+    }
+    
+    .error-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn {
+      width: 200px;
+      justify-content: center;
+    }
+  }
+</style>

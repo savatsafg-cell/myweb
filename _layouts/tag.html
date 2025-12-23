@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<div class="tag-page">
+  <header class="tag-header">
+    <h1 class="tag-title">#{{ page.tag }}</h1>
+    <p class="tag-description">
+      共找到 {{ site.tags[page.tag] | size }} 篇相关文章
+    </p>
+  </header>
+
+  <div class="tag-posts">
+    {% for post in site.tags[page.tag] %}
+      <article class="post-item">
+        <h2 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y年%m月%d日" }}</time>
+          {% if post.categories != empty %}
+            • 分类: 
+            {% for category in post.categories %}
+              <a href="{{ '/categories/' | append: category | relative_url }}" class="post-category">{{ category }}</a>
+              {% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="post-excerpt">
+          {{ post.excerpt | strip_html | truncatewords: 50 }}
+        </div>
+        <a href="{{ post.url | relative_url }}" class="read-more">阅读全文</a>
+      </article>
+    {% endfor %}
+  </div>
+</div>

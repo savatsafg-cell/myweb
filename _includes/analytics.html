@@ -1,0 +1,44 @@
+---
+layout: null
+---
+
+{% if site.google_analytics and site.google_analytics != 'G-XXXXXXXXXX' %}
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.google_analytics }}', {
+    'anonymize_ip': true,
+    'page_title': '{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}'
+  });
+
+  // Track outbound links
+  document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('a[href^="http"]:not([href*="{{ site.url | remove: 'https://' | remove: 'http://' }}"])');
+    
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var url = this.getAttribute('href');
+        gtag('event', 'click', {
+          'event_category': 'outbound',
+          'event_label': url,
+          'transport_type': 'beacon'
+        });
+      });
+    });
+  });
+</script>
+{% endif %}
+
+{% if site.google_site_verification %}
+<!-- Google Site Verification -->
+<meta name="google-site-verification" content="{{ site.google_site_verification }}" />
+{% endif %}
+
+{% if site.bing_site_verification %}
+<!-- Bing Site Verification -->
+<meta name="msvalidate.01" content="{{ site.bing_site_verification }}" />
+{% endif %}
