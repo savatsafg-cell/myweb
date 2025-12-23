@@ -3,7 +3,7 @@ title: 个人博客
 description: >-
   欢迎来到我的个人博客，这里分享技术文章、生活感悟和创意思考。
 baseurl: ""
-url: "https://username.github.io"
+url: "https://savatsafg-cell.github.io/myweb/"
 
 # Author
 author: Your Name
@@ -75,4 +75,5 @@ bing_site_verification:  # Optional: Add your Bing Webmaster Tools verification 
 
 # Comments (Optional)
 disqus:
+
   shortname: your-disqus-shortname
