@@ -6,13 +6,13 @@ baseurl: "/myweb"
 url: "https://savatsafg-cell.github.io/myweb/"
 
 # Author
-author: Your Name
-email: your.email@example.com
+author: savatsafg-cell
+email: savatsafg-cell@example.com
 avatar: "/assets/images/avatar.jpg"
 
 # Social links
 twitter_username:
-github_username:
+github_username: savatsafg-cell
 linkedin_username:
 instagram_username:
 
@@ -77,4 +77,5 @@ bing_site_verification:  # Optional: Add your Bing Webmaster Tools verification 
 disqus:
 
   shortname: your-disqus-shortname
+
 
